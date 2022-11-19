@@ -1,15 +1,16 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import { TabActions } from '@react-navigation/native';
+import { Tab } from '@rneui/themed';
 
-import { Input, Tab, Text, TextInput, TabView } from '@rneui/themed';
-
+import HistoricoTab from './abas/HistoricoTab' // perguntar o porquê de 0 . funcionar e o .. não sendo que estão no mesmo nível
+import PesquisaTab from './abas/PesquisaTab' 
 import React from 'react';
 export default () => {
 const [index, setIndex] = React.useState(0);
 
 return (
-  <>
+  // por que o  tem o <> </> vazio
+  <> 
     <Tab
       value={index}
       onChange={(e) => setIndex(e)}
@@ -22,28 +23,20 @@ return (
       <Tab.Item
         title="Pesquisa"
         titleStyle={{ fontSize: 12 }}
-        icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
+        //icon={{ name: 'search-outline', type: 'ionicon', color: 'white' }}
+        icon={'fa-solid fa-magnifying-glass'}
+        
       />
       <Tab.Item
         title="Historico"
         titleStyle={{ fontSize: 12 }}
-        icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
+        //icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
       />
     </Tab>
-
-    <TabView value={index} onChange={setIndex} animationType="spring">
-      <TabView.Item style={{ backgroundColor: 'beige', width: '100%' , padding: 25}}>
-        <TabView style={{ flex: 1, justifyContent: 'top', alignItems: 'center', padding: 12 }}>
-          <Input
-            style={{borderBottonColor: '#CCC', borderWidth: 1, padding: 12, 
-            width: '95%' }}
-            placeholder="Digite a cidade!"/>
-        </TabView>
-      </TabView.Item>
-      <TabView.Item style={{ backgroundColor: 'beige', width: '100%' }}>
-        <Text h1>Favorite</Text>
-      </TabView.Item>
-    </TabView>
+   <PesquisaTab/>
+   <HistoricoTab/>
   </>
 );
 };
+
+
